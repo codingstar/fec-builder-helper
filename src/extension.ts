@@ -41,8 +41,9 @@ export function activate(context: vscode.ExtensionContext) {
   const schema2md = vscode.commands.registerCommand('extension.schema2md', () => {
     const fecBuilderBinPath = execSync(`which fec-builder`).toString()
     const schemaPath = path.join(fecBuilderBinPath, '../../lib/node_modules/fec-builder/preset-configs/config.schema.json')
+    console.log('schema path: ' + schemaPath)
     const schema = require(schemaPath)
-    const markdown = schemaToMarkdown('Build Config', schema, 0)
+    const markdown = schemaToMarkdown('Build Config', schema, { level: 0, useTitle: true, keyPath: [] })
     const arr = []
     for (var i = 0, j = markdown.length; i < j; ++i) {
       arr.push(markdown.charCodeAt(i))
