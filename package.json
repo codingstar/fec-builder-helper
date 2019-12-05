@@ -2,7 +2,12 @@
   "name": "fec-builder-helper",
   "displayName": "Fec-Builder Helper",
   "description": "helper for fec-builder",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "codingyjt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codingstar/fec-builder-helper"
+  },
   "engines": {
     "vscode": "^1.38.0"
   },
@@ -10,8 +15,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.loadSchema",
-    "onCommand:extension.schema2md"
+    "onCommand:extension.loadSchema"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -33,7 +37,7 @@
     "@types/glob": "^7.1.1",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.7",
-    "@types/vscode": "^1.40.0",
+    "@types/vscode": "^1.38.0",
     "glob": "^7.1.5",
     "mocha": "^6.2.2",
     "typescript": "^3.6.4",
