@@ -19,10 +19,6 @@
       {
         "command": "extension.loadSchema",
         "title": "FEC: Load build-config.json schema"
-      },
-      {
-        "command": "extension.schema2md",
-        "title": "FEC: Transform build-config schema to markdown"
       }
     ]
   },

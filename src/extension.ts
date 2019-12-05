@@ -4,7 +4,6 @@ import * as vscode from 'vscode'
 import * as path from 'path'
 import * as fs from 'fs'
 import { execSync } from 'child_process'
-import { schemaToMarkdown } from './utils/build-config'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -38,35 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.workspace.getConfiguration().update('json.schemas', jsonConfig, true)
   })
 
-  const schema2md = vscode.commands.registerCommand('extension.schema2md', () => {
-    const fecBuilderBinPath = execSync(`which fec-builder`).toString()
-    const schemaPath = path.join(fecBuilderBinPath, '../../lib/node_modules/fec-builder/preset-configs/config.schema.json')
-    console.log('schema path: ' + schemaPath)
-    const schema = require(schemaPath)
-    const markdown = schemaToMarkdown('Build Config', schema, { level: 0, useTitle: true, keyPath: [] })
-    const arr = []
-    for (var i = 0, j = markdown.length; i < j; ++i) {
-      arr.push(markdown.charCodeAt(i))
-    }
-
-    const workspacePath = vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.path
-
-    if (!workspacePath) {
-      vscode.window.showErrorMessage('Workspace is empty.')
-      return
-    }
-    const targetPath = path.join(workspacePath, './build-config.md')
-    console.log('Markdown Output Path: ' + targetPath)
-
-    try {
-      fs.writeFileSync(targetPath, markdown)
-      vscode.window.showInformationMessage('Markdown is generated!')
-    } catch {
-      vscode.window.showErrorMessage('Write markdown failed.')
-    }
-  })
-
-  context.subscriptions.push(loadSchema, schema2md)
+  context.subscriptions.push(loadSchema)
 }
 
 // this method is called when your extension is deactivated
