@@ -1,67 +1,35 @@
-TODO
+# fec-builder-helper
 
-# fec-builder-helper README
-
-This is the README for your extension "fec-builder-helper". After writing up a brief description, we recommend including the following sections.
+[fec-builder](https://github.com/Front-End-Engineering-Cloud/builder) 助手
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- 根据 fec-builder 中定义的 build-config 的 JSON schema，为项目中编辑 build-config 提供 hover 提示
+  **Usage:** `cmd+shift+p` 后输入 `loadSchema` 并执行
 
-For example if there is an image subfolder under your extension project workspace:
+  - 正确性校验
 
-\!\[feature X\]\(images/feature-x.png\)
+    ![正确性校验](https://user-images.githubusercontent.com/5511451/69794179-c5726880-1204-11ea-9d50-354a6df8cfad.png)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+  - 字段释义
+
+    ![字段释义](https://user-images.githubusercontent.com/5511451/69793995-6ca2d000-1204-11ea-9903-1be9a008e8ae.png)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- 依赖本地安装的 fec-builder 版本 >= 1.16.1
+- 项目内 build config 相关的配置文件名应为 `["/build-config.json", "/build-config.*.json", "/build-config-*.json"]` 之一。
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+```json
+{
+  "fecBuilderHelper.path": "YOUR FEC-BUILDER PATH" // 优先使用配置的路径
+}
+```
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.1.0
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+初始版本
