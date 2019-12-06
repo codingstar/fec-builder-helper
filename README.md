@@ -22,7 +22,11 @@
 
 ## Extension Settings
 
-No configuration.
+```json
+{
+  "fecBuilderHelper.path": "YOUR FEC-BUILDER PATH" // 优先使用配置的路径
+}
+```
 
 ## Release Notes
 

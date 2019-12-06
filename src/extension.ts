@@ -17,10 +17,20 @@ export function activate(context: vscode.ExtensionContext) {
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
   const loadSchema = vscode.commands.registerCommand('extension.loadSchema', () => {
-    // The code you place here will be executed every time your command is executed
+    let schemaPath
+    const fecBuilderPath: string | undefined = vscode.workspace.getConfiguration().get('fecBuilderHelper.path')
+    if (fecBuilderPath) { // 优先使用配置的路径
+      schemaPath = path.join(fecBuilderPath, './preset-configs/config.schema.json')
+    } else {
+      const fecBuilderBinPath = execSync(`which fec-builder`).toString()
+      schemaPath = path.join(fecBuilderBinPath, '../../lib/node_modules/fec-builder/preset-configs/config.schema.json')
+    }
 
-    const fecBuilderBinPath = execSync(`which fec-builder`).toString()
-    const schemaPath = path.join(fecBuilderBinPath, '../../lib/node_modules/fec-builder/preset-configs/config.schema.json')
+    if (!fs.existsSync(schemaPath)) {
+      vscode.window.showErrorMessage('Please upgrade your fec-builder to v1.16.1 or later!')
+      return
+    }
+
     const jsonConfig = [{
       "fileMatch": [
         "/build-config.json",
@@ -30,7 +40,6 @@ export function activate(context: vscode.ExtensionContext) {
       "url": `file://${schemaPath}`
     }]
 
-    // Display a message box to the user
     vscode.window.showInformationMessage('Load Schema Success: ' + schemaPath)
 
     // 最后一个参数，为 true 时表示写入全局配置，为 false 或不传时则只写入工作区配置

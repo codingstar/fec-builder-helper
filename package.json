@@ -2,7 +2,7 @@
   "name": "fec-builder-helper",
   "displayName": "Fec-Builder Helper",
   "description": "helper for fec-builder",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "codingyjt",
   "repository": {
     "type": "git",
@@ -24,7 +24,18 @@
         "command": "extension.loadSchema",
         "title": "FEC: Load build-config.json schema"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Fec-builder Helper Config",
+      "properties": {
+        "fecBuilderHelper.path": {
+          "type": "string",
+          "default": "",
+          "description": "本地 fec-builder 的安装目录"
+        }
+      }
+  }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
