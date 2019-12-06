@@ -30,10 +30,6 @@
 
 ## Release Notes
 
-### 0.0.1
+### 0.1.0
 
-提供了在 vscode 中校验并提示 build-config 相关 json 的字段的功能。
-
-### 0.0.2
-
-fix package.json 中的 repository url
+初始版本

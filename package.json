@@ -2,7 +2,7 @@
   "name": "fec-builder-helper",
   "displayName": "Fec-Builder Helper",
   "description": "helper for fec-builder",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "publisher": "codingyjt",
   "repository": {
     "type": "git",
